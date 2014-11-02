@@ -371,7 +371,7 @@ p3a = reactive({p01a()*p12a()*p23a()}) #probability of 3 nest attempts, adults
 pveca <- reactive({c(p0a(),p1a(),p2a(),p3a())})
 Aa <- reactive ({t(c(0,1,2,3))%*%(pveca())}) #mean number of nest attempts, adults
 
-Fa <- reactive({(input$Ea/2)*Aa()*input$fa*input$ChMort2a*input$fMort2a})  #male young per Adult male
+Fa <- reactive({(input$Ea/2)*Aa()*input$nsa*input$fa*input$ChMort2a*input$fMort2a})  #male young per Adult male
 Phiba = reactive({input$sba*input$sMort2a}) #adult survival of breeding season including threat
 Phia = reactive({Phiba()*input$WASY}) #adult annual survival, breeding * winter
 
@@ -392,7 +392,7 @@ p3s <- reactive({p01s()*p12s()*p23s()}) #probability of 3 nest attempts, adults
 pvecs <- reactive({c(p0s(),p1s(),p2s(),p3s())})
 As <- reactive ({t(c(0,1,2,3))%*%(pvecs())}) #mean number of nest attempts, adults
 
-Fs <- reactive({(input$E/2)*Aa()*input$f*input$ChMort2*input$fMort2})  #male young per Adult male
+Fs <- reactive({(input$E/2)*Aa()*input$ns*input$f*input$ChMort2*input$fMort2})  #male young per Adult male
 Phibs <- reactive({input$sb*input$sMort2}) #adult survival of breeding season including threat
 Phis <- reactive({Phibs()*input$WSY}) #adult annual survival, breeding * winter
 
@@ -426,7 +426,7 @@ p3a2 = reactive({p01a()*p12a()*p23a()}) #probability of 3 nest attempts, adults
 pveca2 <- reactive({c(p0a2(),p1a2(),p2a2(),p3a2())})
 Aa2 <- reactive ({t(c(0,1,2,3)) %*% pveca2()})
   
-Fa2 <- reactive({(input$Ea2/2)*Aa2()*input$fa2*input$ChMort2a2*input$fMort2a2})  #male young per Adult male
+Fa2 <- reactive({(input$Ea2/2)*Aa2()*input$nsa2*input$fa2*input$ChMort2a2*input$fMort2a2})  #male young per Adult male
 Phiba2 = reactive({input$sba2*input$sMort2a2}) #adult survival of breeding season including threat
 Phia2 = reactive({Phiba2()*input$WASY2}) #adult annual survival, breeding * winter
 
@@ -447,7 +447,7 @@ p3s2 <- reactive({p01s2()*p12s2()*p23s2()}) #probability of 3 nest attempts, adu
 pvecs2 <- reactive({c(p0s2(),p1s2(),p2s2(),p3s2())})
 As2 <- reactive ({t(c(0,1,2,3))%*%(pvecs2())}) #mean number of nest attempts, adults
 
-Fs2 <- reactive({(input$E2/2)*As2()*input$f2*input$ChMort22*input$fMort22})  #male young per Adult male
+Fs2 <- reactive({(input$E2/2)*As2()*input$ns2*input$f2*input$ChMort22*input$fMort22})  #male young per Adult male
 Phibs2 <- reactive({input$sb2*input$sMort22}) #adult survival of breeding season including threat
 Phis2 <- reactive({Phibs2()*input$WSY2}) #adult annual survival, breeding * winter
 
