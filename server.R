@@ -49,7 +49,7 @@ PS2 <- function(ns,bs,rs,rf,rbf){
 
 #proportion of males with 3 successful nest attempts
 PS3 <- function(ns,bs,rs,rf,rbf){
-ns*bs*rs*ns*bs*rs*rsdelta*ns +
+  ns*bs*rs*ns*bs*rs*rsdelta*ns +
   ns*bs*rs*ns*(1-bs)*rbf*rbfdelta*ns +
   ns*(1-bs)*rbf*ns*bs*rs*rsdelta*ns +
   ns*(1-bs)*rbf*ns*(1-bs)*rbf*rbfdelta*ns
@@ -421,7 +421,7 @@ output$Ns02 <- renderUI({
 
   pveca <- reactive({c(ps1a(),ps2a(),ps3a())}) #vector of the above 3 probabiliities
   Aa <- reactive ({t(c(1,2,3))%*%(pveca())}) #mean number of successful nest attempts, adults in stratum 1
-  Fa <- reactive({input$ya*(input$Ea/2)*Aa()*input$fa*input$slfa*input$ChMort2a*input$fMort2a}) #male young per Adult male stratum 1
+  Fa <- reactive({input$ya*(input$Ea/2)*Aa()*input$fa*input$sfla*input$ChMort2a*input$fMort2a}) #male young per Adult male stratum 1
   Phiba = reactive({input$sba*input$sMort2a}) #adult survival of breeding season including threat
   Phia = reactive({Phiba()*input$WASY}) #adult annual survival, breeding * winter
  
@@ -438,7 +438,7 @@ output$Ns02 <- renderUI({
 
   pvecs <- reactive({c(ps1(),ps2(),ps3())})#vector of the above 3 probabiliities
   As <- reactive ({t(c(1,2,3))%*%(pvecs())}) #mean number of nest attempts, subadults, stratum 1
-  Fs <- reactive({input$ys*(input$E/2)*As()*input$f*input$slf*input$ChMort2*input$fMort2}) #male young per subAdult male
+  Fs <- reactive({input$ys*(input$E/2)*As()*input$f*input$sfl*input$ChMort2*input$fMort2}) #male young per subAdult male
   Phibs <- reactive({input$sb*input$sMort2}) #subadult survival of breeding season including threat
   Phis <- reactive({Phibs()*input$WSY}) #subadult annual survival, breeding * winter
 
@@ -459,7 +459,7 @@ output$Ns02 <- renderUI({
   
   pveca2 <- reactive({c(ps1a2(),ps2a2(),ps3a2())})
   Aa2 <- reactive ({t(c(1,2,3)) %*% pveca2()})
-  Fa2 <- reactive({input$ya2*(input$Ea2/2)*Aa2()*input$fa2*input$slfa2*input$ChMort2a2*input$fMort2a2}) #male young per Adult male, stratum 2
+  Fa2 <- reactive({input$ya2*(input$Ea2/2)*Aa2()*input$fa2*input$sfla2*input$ChMort2a2*input$fMort2a2}) #male young per Adult male, stratum 2
   Phiba2 = reactive({input$sba2*input$sMort2a2}) #adult survival of breeding season including threat, stratum 2
   Phia2 = reactive({Phiba2()*input$WASY2}) #adult annual survival, breeding * winter, stratum 2
   
@@ -473,7 +473,7 @@ output$Ns02 <- renderUI({
   
   pvecs2 <- reactive({c(ps12(),ps22(),ps32())})
   As2 <- reactive ({t(c(1,2,3))%*%(pvecs2())}) #mean number of nest attempts, subadults stratum 2
-  Fs2 <- reactive({input$ys2*(input$E2/2)*As2()*input$f2*input$slf2*input$ChMort22*input$fMort22}) #male young per subAdult male, stratum 2
+  Fs2 <- reactive({input$ys2*(input$E2/2)*As2()*input$f2*input$sfla2*input$ChMort22*input$fMort22}) #male young per subAdult male, stratum 2
   Phibs2 <- reactive({input$sb2*input$sMort22}) #subadult survival of breeding season including threat, stratum 2
   Phis2 <- reactive({Phibs2()*input$WSY2}) #subadult annual survival, breeding * winter, stratum 2
 
@@ -490,7 +490,6 @@ output$Ns02 <- renderUI({
 #Psi12A 0      Phis2   Phia2
 #This matrix is used for the metapopulation
 
- 
   Lesmattotal <- reactive({matrix(c(
     Fs()*input$WSA*(1-input$Psi12J),Fa()*input$WSAa*(1-input$Psi12Ja),Fs2()*input$WSA2*(input$Psi21J),Fa2()*input$WSAa2*input$Psi21Ja,
     Phis()*(1-input$Psi12A),Phia()*(1-input$Psi12A),Phis2()*(input$Psi21A),Phia2()*(input$Psi21A),
@@ -708,7 +707,7 @@ output$Ns02 <- renderUI({
             
             #create the 4 by 4 transition matrix for time t, using the randomly generated values
             #note, stochasticity in movement rates isn't included
-               Lesmattotal <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),Fst*WSAat*input$Psi12J,Phist*input$Psi12A,
+            Lesmattotal <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),Fst*WSAat*input$Psi12J,Phist*input$Psi12A,
                                     Fat*WSAat*(1-input$Psi12Ja),Phiat*(1-input$Psi12A),Fat*WSAat*input$Psi12Ja,Phiat*input$Psi12A,
                                     Fst2*WSAt2*input$Psi21J,Phist2*input$Psi21A,Fst2*WSAt2*(1-input$Psi21J),Phist2*(1-input$Psi21A),
                                     Fat2*WSAat2*input$Psi21Ja,Phiat2*input$Psi21A,Fat2*WSAat2*(1-input$Psi21Ja),Phiat2*(1-input$Psi21A)),4,4,byrow=FALSE)
@@ -720,7 +719,7 @@ output$Ns02 <- renderUI({
             Ntotaltot[i] <- popmattotal[1,i]+popmattotal[2,i]+popmattotal[3,i]+popmattotal[4,i]
             Ntotaltot[i][Ntotaltot[i-1]<1]=0
             Nbreed1[i] <- min(Ntotal1[i],K)
-            Nbreed2[i] <- min(Ntotal2[i],K)
+            Nbreed2[i] <- min(Ntotal2[i],K2)
             Ntotalbtot[i] <- min(Ntotaltot[i],K+K2)
           }
         }
@@ -785,7 +784,7 @@ output$Ns02 <- renderUI({
   #I used it to display the results of calculations when it seemed something was going wrong in one of the steps
   output$errcheck <- renderText({
     if(input$States==1) {return(NULL)}
-    paste("extinct2 :",)
+    paste("K2 :",trajectory()$K2,"K :",trajectory()$K)
   })
   
   #RESULTS TO BE DISPLAYED
