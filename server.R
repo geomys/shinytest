@@ -48,7 +48,8 @@ PS2 <- function(ns,bs,rs,rf,rbf){
 }
 
 #proportion of males with 3 successful nest attempts
-PS3 <- function(ns,bs,rs,rf,rbf){bs*rs*ns*bs*rs*rsdelta*ns +
+PS3 <- function(ns,bs,rs,rf,rbf){
+ns*bs*rs*ns*bs*rs*rsdelta*ns +
   ns*bs*rs*ns*(1-bs)*rbf*rbfdelta*ns +
   ns*(1-bs)*rbf*ns*bs*rs*rsdelta*ns +
   ns*(1-bs)*rbf*ns*(1-bs)*rbf*rbfdelta*ns
