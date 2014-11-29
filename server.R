@@ -490,11 +490,12 @@ output$Ns02 <- renderUI({
 #Psi12A 0      Phis2   Phia2
 #This matrix is used for the metapopulation
 
+ 
   Lesmattotal <- reactive({matrix(c(
-    Fs()*input$WSA*(1-input$Psi12J),Fa()*input$WSAa*(1-input$Psi12Ja),input$Psi21A,0,
-    Phis()*(1-input$Psi12A),Phia()*(1-input$Psi12A),0,input$Psi21A,
-    input$Psi12A,0,Fs2()*input$WSA2*(1-input$Psi21J),Fa2()*input$WSAa2*(1-input$Psi12Ja),
-    0, input$Psi12A,Phis2()*(1-input$Psi21A), Phia2()*(1-input$Psi12A)),
+    Fs()*input$WSA*(1-input$Psi12J),Fa()*input$WSAa*(1-input$Psi12Ja),Fs2()*input$WSA2*(input$Psi21J),Fa2()*input$WSAa2*input$Psi21Ja,
+    Phis()*(1-input$Psi12A),Phia()*(1-input$Psi12A),Phis2()*(input$Psi21A),Phia2()*(input$Psi21A),
+    Fs()*input$WSA*(input$Psi12J),Fa()*input$WSAa*(input$Psi12Ja),Fs2()*input$WSA2*(1-input$Psi21J),Fa2()*input$WSAa2*(1-input$Psi21Ja),
+    Phis()*input$Psi12A, Phia()*input$Psi12A,Phis2()*(1-input$Psi21A), Phia2()*(1-input$Psi12A)),
     4,4,byrow=TRUE)})
 
 #Metapopulation growth rate
@@ -707,10 +708,10 @@ output$Ns02 <- renderUI({
             
             #create the 4 by 4 transition matrix for time t, using the randomly generated values
             #note, stochasticity in movement rates isn't included
-            Lesmattotal <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),input$Psi12A,0,
-                                    Fat*WSAat*(1-input$Psi12Ja),Phiat*(1-input$Psi12A),0,input$Psi12A,
-                                    input$Psi21A,0,Fst2*WSAt2*(1-input$Psi21J),Phist2*(1-input$Psi21A),
-                                    0,input$Psi21A,Fat2*WSAat2*(1-input$Psi12Ja),Phiat2*(1-input$Psi12A)),4,4,byrow=FALSE)
+               Lesmattotal <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),Fst*WSAat*input$Psi12J,Phist*input$Psi12A,
+                                    Fat*WSAat*(1-input$Psi12Ja),Phiat*(1-input$Psi12A),Fat*WSAat*input$Psi12Ja,Phiat*input$Psi12A,
+                                    Fst2*WSAt2*input$Psi21J,Phist2*input$Psi21A,Fst2*WSAt2*(1-input$Psi21J),Phist2*(1-input$Psi21A),
+                                    Fat2*WSAat2*input$Psi21Ja,Phiat2*input$Psi21A,Fat2*WSAat2*(1-input$Psi21Ja),Phiat2*(1-input$Psi21A)),4,4,byrow=FALSE)
   
             #project the population for the current year, and store the abundances in the relevant matrices
             popmattotal[1:4,i] <- Lesmattotal%*%popmattotal[1:4,i-1]
