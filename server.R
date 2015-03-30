@@ -122,7 +122,7 @@ shinyServer(function(input,output,session){ #standard first line
     numericInput("sba", label=h6("Base adult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WASY<- renderUI({
-    numericInput("WASY", label=h6("Adult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WASY", label=h6("Adult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSAa<- renderUI({
     numericInput("WSAa", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -172,7 +172,7 @@ output$Ns0 <- renderUI({
     numericInput("sb", label=h6("Base subadult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WSY<- renderUI({
-    numericInput("WSY", label=h6("Subdult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WSY", label=h6("Subdult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSA<- renderUI({
     numericInput("WSA", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -229,7 +229,7 @@ output$Ns0 <- renderUI({
     numericInput("sba2", label=h6("Base adult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WASY2<- renderUI({
-    numericInput("WASY2", label=h6("Adult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WASY2", label=h6("Adult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSAa2<- renderUI({
     numericInput("WSAa2", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -280,7 +280,7 @@ output$Ns02 <- renderUI({
     numericInput("sb2", label=h6("Base subadult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WSY2<- renderUI({
-    numericInput("WSY2", label=h6("Subadult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WSY2", label=h6("Subadult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSA2<- renderUI({
     numericInput("WSA2", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -318,7 +318,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"fa", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfla", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sba", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WASY", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WASY", ,0.88,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSAa", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12Ja", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a", ,1,min=0.00,max=1.00,step=0.01 )
@@ -333,7 +333,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"f", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfl", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sb", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WSY", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WSY", ,0.88,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSA", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12A", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12J", ,0,min=0.00,max=1.00,step=0.01 )
@@ -356,7 +356,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"fa2", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfla2", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sba2", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WASY2", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WASY2", ,0.88,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSAa2", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21Ja", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
@@ -371,7 +371,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"f2", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfl2", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sb2", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WSY2", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WSY2", ,0.88,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSA2", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21A", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21J", ,0,min=0.00,max=1.00,step=0.01 )
