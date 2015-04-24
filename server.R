@@ -92,7 +92,7 @@ shinyServer(function(input,output,session){ #standard first line
     numericInput("Na0",label=h6("Starting abundance adults:"),100,min=0.00,max=1000,step=1)
   })
   output$ya <- renderUI({
-    numericInput("ya", label=h6("Nesting rate:"),0.85,min=0.00,max=1.00,step=0.01 )
+    numericInput("ya", label=h6("Nesting rate:"),1.0,min=0.00,max=1.00,step=0.01 )
   })
   output$Ea <- renderUI({
     numericInput("Ea", label=h6("Clutch size:"),2.85,min=0.00,max=3.00,step=0.01 )
@@ -122,7 +122,7 @@ shinyServer(function(input,output,session){ #standard first line
     numericInput("sba", label=h6("Base adult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WASY<- renderUI({
-    numericInput("WASY", label=h6("Adult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WASY", label=h6("Adult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSAa<- renderUI({
     numericInput("WSAa", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -145,7 +145,7 @@ output$Ns0 <- renderUI({
   numericInput("Ns0",label=h6("Starting abundance subadults:"),50,min=0.00,max=1000,step=1)
 })
   output$ys <- renderUI({
-    numericInput("ys", label=h6("Nesting rate:"),0.85,min=0.00,max=1.00,step=0.01 )
+    numericInput("ys", label=h6("Nesting rate:"),1.0,min=0.00,max=1.00,step=0.01 )
   })
   output$E <- renderUI({
     numericInput("E", label=h6("Clutch size:"),2.85,min=0.00,max=3.00,step=0.01 )
@@ -172,7 +172,7 @@ output$Ns0 <- renderUI({
     numericInput("sb", label=h6("Base subadult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WSY<- renderUI({
-    numericInput("WSY", label=h6("Subdult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WSY", label=h6("Subdult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSA<- renderUI({
     numericInput("WSA", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -199,7 +199,7 @@ output$Ns0 <- renderUI({
     numericInput("Na02",label=h6("Starting abundance adults:"),100,min=0.00,max=1000,step=1)
   })
   output$ya2 <- renderUI({
-    numericInput("ya2", label=h6("Nesting rate:"),0.85,min=0.00,max=1.00,step=0.01 )
+    numericInput("ya2", label=h6("Nesting rate:"),1.0,min=0.00,max=1.00,step=0.01 )
   })
   output$Ea2 <- renderUI({
     numericInput("Ea2", label=h6("Clutch size:"),2.85,min=0.00,max=3.00,step=0.01 )
@@ -229,7 +229,7 @@ output$Ns0 <- renderUI({
     numericInput("sba2", label=h6("Base adult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WASY2<- renderUI({
-    numericInput("WASY2", label=h6("Adult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WASY2", label=h6("Adult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSAa2<- renderUI({
     numericInput("WSAa2", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -253,7 +253,7 @@ output$Ns02 <- renderUI({
   numericInput("Ns02",label=h6("Starting abundance subadults:"),50,min=0.00,max=1000,step=1)
 })
   output$ys2 <- renderUI({
-    numericInput("ys2", label=h6("Nesting rate:"),0.85,min=0.00,max=1.00,step=0.01 )
+    numericInput("ys2", label=h6("Nesting rate:"),1.0,min=0.00,max=1.00,step=0.01 )
   })
   output$E2 <- renderUI({
     numericInput("E2", label=h6("Clutch size:"),2.85,min=0.00,max=3.00,step=0.01 )
@@ -280,7 +280,7 @@ output$Ns02 <- renderUI({
     numericInput("sb2", label=h6("Base subadult breeding surv.:"),1,min=0.00,max=1.00,step=0.01 )
   })
   output$WSY2<- renderUI({
-    numericInput("WSY2", label=h6("Subadult winter survival:"), 0.88, min = 0.00, max = 1.00,step=0.01)
+    numericInput("WSY2", label=h6("Subadult winter survival:"), 0.85, min = 0.00, max = 1.00,step=0.01)
   })
   output$WSA2<- renderUI({
     numericInput("WSA2", label=h6("Juvenile winter survival:"), 0.59, min = 0.00, max = 1.00,step=0.01)
@@ -308,7 +308,7 @@ output$Ns02 <- renderUI({
     if (as.numeric(input$reset_button) > 0) { #the reset button value gets incremented by 1 when it is clicked
       updateNumericInput(session,"Na0", ,100,min=0.00,max=1000,step=1 )
       updateNumericInput(session,"Ns0", ,50,min=0.00,max=1000,step=1 )
-      updateNumericInput(session,"ya", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"ya", ,1.0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Ea", ,2.85,min=0.00,max=3.00,step=0.01 )
       updateNumericInput(session,"nsa", ,0.6,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"K", ,250,min=0,max=1000,step=1 )
@@ -318,13 +318,13 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"fa", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfla", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sba", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WASY", ,0.88,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WASY", ,0.85,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSAa", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12Ja", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2a", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"ys", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"ys", ,1.0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"E", ,2.85,min=0.00,max=3.00,step=0.01 )
       updateNumericInput(session,"ns", ,0.6,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Rf", ,0.92,min=0.00,max=1.00,step=0.01 )
@@ -333,7 +333,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"f", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfl", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sb", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WSY", ,0.88,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WSY", ,0.85,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSA", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12A", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12J", ,0,min=0.00,max=1.00,step=0.01 )
@@ -346,7 +346,7 @@ output$Ns02 <- renderUI({
     if (as.numeric(input$reset_button2) > 0) {
       updateNumericInput(session,"Na02", ,100,min=0.00,max=1000,step=1 )
       updateNumericInput(session,"Ns02", ,50,min=0.00,max=1000,step=1 )
-      updateNumericInput(session,"ya2", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"ya2", ,1.0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Ea2", ,2.85,min=0.00,max=3.00,step=0.01 )
       updateNumericInput(session,"nsa2", ,0.6,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"K2", ,250,min=0,max=1000,step=1 )
@@ -356,13 +356,13 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"fa2", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfla2", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sba2", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WASY2", ,0.88,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WASY2", ,0.85,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSAa2", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21Ja", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"ys2", ,0.85,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"ys2", ,1.0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"E2", ,2.85,min=0.00,max=3.00,step=0.01 )
       updateNumericInput(session,"ns2", ,0.6,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Rf2", ,0.92,min=0.00,max=1.00,step=0.01 )
@@ -371,7 +371,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"f2", ,0.4,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sfl2", ,0.9,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sb2", ,1,min=0.00,max=1.00,step=0.01 )
-      updateNumericInput(session,"WSY2", ,0.88,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"WSY2", ,0.85,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSA2", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21A", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21J", ,0,min=0.00,max=1.00,step=0.01 )
@@ -491,10 +491,10 @@ output$Ns02 <- renderUI({
 #This matrix is used for the metapopulation
 
   Lesmattotal <- reactive({matrix(c(
-    Fs()*input$WSA*(1-input$Psi12J),Fa()*input$WSAa*(1-input$Psi12Ja),Fs2()*input$WSA2*(input$Psi21J),Fa2()*input$WSAa2*input$Psi21Ja,
-    Phis()*(1-input$Psi12A),Phia()*(1-input$Psi12A),Phis2()*(input$Psi21A),Phia2()*(input$Psi21A),
-    Fs()*input$WSA*(input$Psi12J),Fa()*input$WSAa*(input$Psi12Ja),Fs2()*input$WSA2*(1-input$Psi21J),Fa2()*input$WSAa2*(1-input$Psi21Ja),
-    Phis()*input$Psi12A, Phia()*input$Psi12A,Phis2()*(1-input$Psi21A), Phia2()*(1-input$Psi12A)),
+    Fs()*input$WSA*(1-input$Psi12J),Fa()*input$WSAa*(1-input$Psi12Ja),input$Psi21A,0,
+    Phis()*(1-input$Psi12A),Phia()*(1-input$Psi12A),0,input$Psi21A,
+    input$Psi12A,0,Fs2()*input$WSA2*(1-input$Psi21J),Fa2()*input$WSAa2*(1-input$Psi12Ja),
+    0, input$Psi12A,Phis2()*(1-input$Psi21A), Phia2()*(1-input$Psi12A)),
     4,4,byrow=TRUE)})
 
 #Metapopulation growth rate
@@ -588,8 +588,8 @@ output$Ns02 <- renderUI({
               Fst <- (popmat1[1,i-1]/Ntotal1[i-1])*((Ntotal1[i-1]-K)/Ntotal1[i-1]*0 + K/Ntotal1[i-1]*Fst) #all subadults over K have fecundity of 0
             }
             
-            Fat <- Fat*rcat #include reproductive catastrophe
-            Fst <- Fst*rcat
+            Fat <- Fat*max(rcat,0.5) #include reproductive catastrophe
+            Fst <- Fst*max(rcat,0.5)
             
             #year-specific Leslie matrix with the randomly-generated rates
             Lesmat1 <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),
@@ -700,17 +700,17 @@ output$Ns02 <- renderUI({
               Fst2 <- (popmat2[1,i-1]/Ntotal2[i-1])*((Ntotal2[i-1]-K2)/Ntotal2[i-1]*0 + K2/Ntotal2[i-1]*Fst2) #all subadults over K have fecundity of 0
             }
             
-            Fat <- Fat*rcat #include reproductive catastrophe
-            Fst <- Fst*rcat
-            Fat2 <- Fat2*rcat
-            Fst2 <- Fst2*rcat
+            Fat <- Fat*max(rcat,0.5) #include reproductive catastrophe
+            Fst <- Fst*max(rcat,0.5)
+            Fat2 <- Fat2*max(rcat,0.5)
+            Fst2 <- Fst2*max(rcat,0.5)
             
             #create the 4 by 4 transition matrix for time t, using the randomly generated values
             #note, stochasticity in movement rates isn't included
-            Lesmattotal <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),Fst*WSAat*input$Psi12J,Phist*input$Psi12A,
-                                    Fat*WSAat*(1-input$Psi12Ja),Phiat*(1-input$Psi12A),Fat*WSAat*input$Psi12Ja,Phiat*input$Psi12A,
-                                    Fst2*WSAt2*input$Psi21J,Phist2*input$Psi21A,Fst2*WSAt2*(1-input$Psi21J),Phist2*(1-input$Psi21A),
-                                    Fat2*WSAat2*input$Psi21Ja,Phiat2*input$Psi21A,Fat2*WSAat2*(1-input$Psi21Ja),Phiat2*(1-input$Psi21A)),4,4,byrow=FALSE)
+            Lesmattotal <- matrix(c(Fst*WSAt*(1-input$Psi12J),Phist*(1-input$Psi12A),input$Psi12A,0,
+                                    Fat*WSAat*(1-input$Psi12Ja),Phiat*(1-input$Psi12A),0,input$Psi12A,
+                                    input$Psi21A,0,Fst2*WSAt2*(1-input$Psi21J),Phist2*(1-input$Psi21A),
+                                    0,input$Psi21A,Fat2*WSAat2*(1-input$Psi12Ja),Phiat2*(1-input$Psi12A)),4,4,byrow=FALSE)
   
             #project the population for the current year, and store the abundances in the relevant matrices
             popmattotal[1:4,i] <- Lesmattotal%*%popmattotal[1:4,i-1]
@@ -719,7 +719,7 @@ output$Ns02 <- renderUI({
             Ntotaltot[i] <- popmattotal[1,i]+popmattotal[2,i]+popmattotal[3,i]+popmattotal[4,i]
             Ntotaltot[i][Ntotaltot[i-1]<1]=0
             Nbreed1[i] <- min(Ntotal1[i],K)
-            Nbreed2[i] <- min(Ntotal2[i],K2)
+            Nbreed2[i] <- min(Ntotal2[i],K)
             Ntotalbtot[i] <- min(Ntotaltot[i],K+K2)
           }
         }
@@ -784,7 +784,7 @@ output$Ns02 <- renderUI({
   #I used it to display the results of calculations when it seemed something was going wrong in one of the steps
   output$errcheck <- renderText({
     if(input$States==1) {return(NULL)}
-    paste("K2 :",trajectory()$K2,"K :",trajectory()$K)
+    paste("extinct2 :",)
   })
   
   #RESULTS TO BE DISPLAYED
