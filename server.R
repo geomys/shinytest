@@ -624,7 +624,7 @@ output$Ns02 <- renderUI({
           Ntotal2 <- c(popmat2[1,1]+popmat2[2,1],rep(0,N.year-1))
           Nbreed2 <- c(min(popmat2[1,1]+popmat2[2,1],K2),rep(0,N.year-1))
           Ntotaltot <- c(popmattotal[1,1]+popmattotal[2,1]+popmattotal[3,1]+popmattotal[4,1],rep(0,N.year-1))
-          Ntotalbtot <- c((Nbreed1+Nbreed2),rep(0,N.year-1))
+          Ntotalbtot <- c((Nbreed1[1]+Nbreed2[1]),rep(0,N.year-1))
           
           for (i in 2:N.year) { #loop through the years
             rcat <- rbinom(1,1,0.95) #probability of no reproductive catastrophe, wherer fecundity = 0
