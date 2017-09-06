@@ -3,14 +3,14 @@
 #and installs and loads them if not.
 if("MASS" %in% rownames(installed.packages()) == FALSE) {
   install.packages("MASS")}
-if("shinyIncubator" %in% rownames(installed.packages()) == FALSE) {
-  devtools::install_github("shiny-incubator", "rstudio")}
+#if("shinyIncubator" %in% rownames(installed.packages()) == FALSE) {
+#  devtools::install_github("shiny-incubator", "rstudio")}
 if("shiny" %in% rownames(installed.packages()) == FALSE) {
   install.packages('httpuv', repos=c(RStudio='http://rstudio.org/_packages', CRAN='http://cran.rstudio.com'))
-  install.packages('devtools') # if you don't already have devtools installed
-  devtools::install_github('shiny', 'rstudio')
+  #install.packages('devtools') # if you don't already have devtools installed
+#  devtools::install_github('shiny', 'rstudio')
 }
-library(shinyIncubator)
+#library(shinyIncubator)
 library(shiny)
 library(MASS)
 
@@ -476,7 +476,8 @@ output$Ns02 <- renderUI({
   Fs2 <- reactive({input$ys2*(input$E2/2)*As2()*input$f2*input$sfla2*input$ChMort22*input$fMort22}) #male young per subAdult male, stratum 2
   Phibs2 <- reactive({input$sb2*input$sMort22}) #subadult survival of breeding season including threat, stratum 2
   Phis2 <- reactive({Phibs2()*input$WSY2}) #subadult annual survival, breeding * winter, stratum 2
-
+  MProd1 <- reactive({(2*Fa())})
+  MProd2 <- reactive({(2*Fa2())})
   #Leslie matrix
   Lesmat2 <- reactive({matrix(c(Fs2()*input$WSA2,Phis2(),
                                 Fa2()*input$WSAa2,
@@ -503,9 +504,8 @@ output$Ns02 <- renderUI({
 #The following code calculates population size for each time step
 
   trajectory <- reactive({
-    withProgress(session, min=0, max=1, {  #creates a progress bar so the user can see that the App is busy
-      setProgress(message = "Calculating...")
-      setProgress(value = 0.2, message = "Calculating, do not change inputs...")
+    withProgress(message = 'Calculation in progress',
+                 detail = 'Do not change input values...', value = 0.2,  {  #creates a progress bar so the user can see that the App is busy
       
       #sets up variables for use in the projection model
       Extinct1 = 0 #initialized a counter for the number of runs where the population went extinct, Stratum 1
@@ -738,7 +738,7 @@ output$Ns02 <- renderUI({
         Nmatrixtotal[iter,] <- Ntotaltot[]
         Nbmatrixtotal[iter,] <- Ntotalbtot[]
       }
-      
+      N11 <- mean(Nbmatrix[,11])
       #calculate mean and confidence bound across all iterations, for each year, for plotting
       Nave <- colMeans(Nmatrixtotal)
       Nbave <- colMeans(Nbmatrixtotal)
@@ -767,14 +767,15 @@ output$Ns02 <- renderUI({
       Eprob1 = Extinct1/as.numeric(input$maxiter)  #extinction probability
       Eprob2 = Extinct2/as.numeric(input$maxiter)  #extinction probability
       Eprobm = Extinctm/as.numeric(input$maxiter)  #extinction probability
+      
       jobLength = 10
       for (k in 1:jobLength) { #closes the loop for the progress bar
-        setProgress(value = k)
+        incProgress(1/jobLength)
       }
       
       list(Nave=Nave,Nbave=Nbave,Nlow=Nlow,Nhi=Nhi,Nblow=Nblow,Nbhi=Nbhi,Eprob1=Eprob1,Eprob2=Eprob2,Eprobm=Eprobm,K=K,K2=K2,
            Nave1=Nave1,Nbave1=Nbave1,Nblow1=Nblow1,Nbhi1=Nbhi1,Nhi1=Nhi1,Nlow1=Nlow1,
-           Nave2=Nave2,Nbave2=Nbave2,Nblow2=Nblow2,Nbhi2=Nbhi2,Nhi2=Nhi2,Nlow2=Nlow2) #list of things for the function to output
+           Nave2=Nave2,Nbave2=Nbave2,Nblow2=Nblow2,Nbhi2=Nbhi2,Nhi2=Nhi2,Nlow2=Nlow2,N11=N11) #list of things for the function to output
     })
   })
   
@@ -815,7 +816,7 @@ output$Ns02 <- renderUI({
   output$pextinct1 <- renderText({#probability of extinction for stratum 1, where there is only 1 stratum
     if(is.null(input$Na0)) {return(NULL)}
     if(input$States==2) {return(NULL)}
-    paste("Probability of extinction: ",trajectory()$Eprob1)})
+    paste("Probability of extinction: ",trajectory()$N11)})
 
 output$pextinct1b <- renderText({#probability of extinction for stratum 1, where there are 2 strata
   if(is.null(input$Na0)) {return(NULL)}
@@ -831,7 +832,25 @@ output$pextinctm <- renderText({#probability of fextinction for metapopulation
   if(input$States==1) {return(NULL)}
   if(is.null(input$Na0)) {return(NULL)}
   paste("Probability of extinction for entire population: ",trajectory()$Eprobm)})
- 
+
+output$MProd1 <- renderText({ #young per male for population 1, when number of states is 1
+  if(input$States==2) {return(NULL)} #this prevents the display of nonsense if certain user input isn't available
+  if(is.null(input$Na0)) {return(NULL)}  #same as abovev
+  paste("Site 1 Mean Productivity: ",round(MProd1(),3))
+})
+
+output$MProd1b <- renderText({ #young per male for population 1, when number of states is 2
+  if(input$States==1) {return(NULL)}
+  if(is.null(input$Na0)) {return(NULL)}
+  paste("Site 1 MeanProductivity: ",round(MProd1(),3))
+})
+
+output$MProd2 <- renderText({ #young per male for population 2, when number of states is 2
+  if(input$States==1) {return(NULL)}
+  if(is.null(input$Na0)) {return(NULL)}
+  paste("Site 1 MeanProductivity: ",round(MProd2(),3))
+})
+
 
 #POPULATION PROJECTION PLOTS
 output$growthtotal <- renderPlot({
