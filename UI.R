@@ -4,11 +4,11 @@ shinyUI( #this function sets up the user interface
 tabsetPanel(tabPanel("Input",
  fluidPage(  #shiny function for setting up a page of information
    tags$head( #this provides formatting information for text boxes
-     tags$style(type="text/css", "#States {width: 50px; }"),
-     tags$style(type="text/css", "#Mortality {width: 50px; }"),
-     tags$style(type="text/css", "#Na0 {width: 50px; }"),
-     tags$style(type="text/css", "#Ns0 {width: 50px; }"),
-     tags$style(type="text/css", "#K {width: 50px; }")
+     tags$style(type="text/css", "#States {width: 100px; }"),
+     tags$style(type="text/css", "#Mortality {width: 100px; }"),
+     tags$style(type="text/css", "#Na0 {width: 100px; }"),
+     tags$style(type="text/css", "#Ns0 {width: 100px; }"),
+     tags$style(type="text/css", "#K {width: 100px; }")
    ),
    fluidRow( #on shiny pages, objects are set up in rows.  The first row acacepts input on the number of breeding sites
       #this input is a pulldown menu, the object type is "selectInput"
@@ -19,7 +19,7 @@ tabsetPanel(tabPanel("Input",
    
    
     mainPanel(           
-      progressInit(),
+    
     
     tags$head(
       tags$style(type='text/css', ".span4 { max-width: 1000px;}")
@@ -47,38 +47,38 @@ tabsetPanel(tabPanel("Input",
 
  
    tags$head( #more textbox formatting
-     tags$style(type="text/css", "#Rs {width: 50px; }"),
-     tags$style(type="text/css", "#Rf {width: 50px; }"),
-     tags$style(type="text/css", "#Rbf {width: 50px; }"),
-     tags$style(type="text/css", "#ys {width: 50px; }"),
-     tags$style(type="text/css", "#E {width: 50px; }"),
-     tags$style(type="text/css", "#f {width: 50px; }"),
-     tags$style(type="text/css", "#ns {width: 50px; }"),
-     tags$style(type="text/css", "#sfl {width: 50px; }"),
-     tags$style(type="text/css", "#sb {width: 50px; }"),
-     tags$style(type="text/css", "#WSY {width: 50px; }"),
-     tags$style(type="text/css", "#WSA {width: 50px; }"),
-     tags$style(type="text/css", "#ChMort2 {width: 50px; }"),
-     tags$style(type="text/css", "#fMort2 {width: 50px; }"),
-     tags$style(type="text/css", "#sMort2 {width: 50px; }"),
-     tags$style(type="text/css", "#Psi12 {width: 50px; }"),
-     tags$style(type="text/css", "#Rsa {width: 50px; }"),
-     tags$style(type="text/css", "#Rfa {width: 50px; }"),
-     tags$style(type="text/css", "#Rbfa {width: 50px; }"),
-     tags$style(type="text/css", "#ya {width: 50px; }"),
-     tags$style(type="text/css", "#Ea {width: 50px; }"),
-     tags$style(type="text/css", "#fa {width: 50px; }"),
-     tags$style(type="text/css", "#nsa {width: 50px; }"),
-     tags$style(type="text/css", "#sfla {width: 50px; }"),
-     tags$style(type="text/css", "#sba {width: 50px; }"),
-     tags$style(type="text/css", "#WASY {width: 50px; }"),
-     tags$style(type="text/css", "#WSAa {width: 50px; }"),
-     tags$style(type="text/css", "#ChMort2a {width: 50px; }"),
-     tags$style(type="text/css", "#fMort2a {width: 50px; }"),
-     tags$style(type="text/css", "#sMort2a {width: 50px; }"),
-     tags$style(type="text/css", "#Psi12Ja {width: 50px; }"),
-     tags$style(type="text/css", "#Psi12J {width: 50px; }"),
-     tags$style(type="text/css", "#Psi12A {width: 50px; }")
+     tags$style(type="text/css", "#Rs {width: 100px; }"),
+     tags$style(type="text/css", "#Rf {width: 100px; }"),
+     tags$style(type="text/css", "#Rbf {width: 100px; }"),
+     tags$style(type="text/css", "#ys {width: 100px; }"),
+     tags$style(type="text/css", "#E {width: 100px; }"),
+     tags$style(type="text/css", "#f {width: 100px; }"),
+     tags$style(type="text/css", "#ns {width: 100px; }"),
+     tags$style(type="text/css", "#sfl {width: 100px; }"),
+     tags$style(type="text/css", "#sb {width: 100px; }"),
+     tags$style(type="text/css", "#WSY {width: 100px; }"),
+     tags$style(type="text/css", "#WSA {width: 100px; }"),
+     tags$style(type="text/css", "#ChMort2 {width: 100px; }"),
+     tags$style(type="text/css", "#fMort2 {width: 100px; }"),
+     tags$style(type="text/css", "#sMort2 {width: 100px; }"),
+     tags$style(type="text/css", "#Psi12 {width: 100px; }"),
+     tags$style(type="text/css", "#Rsa {width: 100px; }"),
+     tags$style(type="text/css", "#Rfa {width: 100px; }"),
+     tags$style(type="text/css", "#Rbfa {width: 100px; }"),
+     tags$style(type="text/css", "#ya {width: 100px; }"),
+     tags$style(type="text/css", "#Ea {width: 100px; }"),
+     tags$style(type="text/css", "#fa {width: 100px; }"),
+     tags$style(type="text/css", "#nsa {width: 100px; }"),
+     tags$style(type="text/css", "#sfla {width: 100px; }"),
+     tags$style(type="text/css", "#sba {width: 100px; }"),
+     tags$style(type="text/css", "#WASY {width: 100px; }"),
+     tags$style(type="text/css", "#WSAa {width: 100px; }"),
+     tags$style(type="text/css", "#ChMort2a {width: 100px; }"),
+     tags$style(type="text/css", "#fMort2a {width: 100px; }"),
+     tags$style(type="text/css", "#sMort2a {width: 100px; }"),
+     tags$style(type="text/css", "#Psi12Ja {width: 100px; }"),
+     tags$style(type="text/css", "#Psi12J {width: 100px; }"),
+     tags$style(type="text/css", "#Psi12A {width: 100px; }")
    ),
    
 
@@ -250,10 +250,10 @@ fluidRow(
              
              tags$head(
           
-               tags$style(type="text/css", "#Mortality2 {width: 50px; }"),
-               tags$style(type="text/css", "#Na02 {width: 50px; }"),
-               tags$style(type="text/css", "#Ns02 {width: 50px; }"),
-               tags$style(type="text/css", "#K2 {width: 50px; }")
+               tags$style(type="text/css", "#Mortality2 {width: 100px; }"),
+               tags$style(type="text/css", "#Na02 {width: 100px; }"),
+               tags$style(type="text/css", "#Ns02 {width: 100px; }"),
+               tags$style(type="text/css", "#K2 {width: 100px; }")
              ),
              fluidRow(
 
@@ -274,38 +274,38 @@ fluidRow(
              
              
              tags$head(
-               tags$style(type="text/css", "#Rs2 {width: 50px; }"),
-               tags$style(type="text/css", "#Rf2 {width: 50px; }"),
-               tags$style(type="text/css", "#Rbf2 {width: 50px; }"),
-               tags$style(type="text/css", "#ys2 {width: 50px; }"),
-               tags$style(type="text/css", "#E2 {width: 50px; }"),
-               tags$style(type="text/css", "#f2 {width: 50px; }"),
-               tags$style(type="text/css", "#ns2 {width: 50px; }"),
-               tags$style(type="text/css", "#sfl2 {width: 50px; }"),
-               tags$style(type="text/css", "#sb2 {width: 50px; }"),
-               tags$style(type="text/css", "#WSY2 {width: 50px; }"),
-               tags$style(type="text/css", "#WSA2 {width: 50px; }"),
-               tags$style(type="text/css", "#ChMort22 {width: 50px; }"),
-               tags$style(type="text/css", "#fMort22 {width: 50px; }"),
-               tags$style(type="text/css", "#sMort22 {width: 50px; }"),
-               tags$style(type="text/css", "#Psi21 {width: 50px; }"),
-               tags$style(type="text/css", "#Rsa2 {width: 50px; }"),
-               tags$style(type="text/css", "#Rfa2 {width: 50px; }"),
-               tags$style(type="text/css", "#Rbfa2 {width: 50px; }"),
-               tags$style(type="text/css", "#ya2 {width: 50px; }"),
-               tags$style(type="text/css", "#Ea2 {width: 50px; }"),
-               tags$style(type="text/css", "#fa2 {width: 50px; }"),
-               tags$style(type="text/css", "#nsa2 {width: 50px; }"),
-               tags$style(type="text/css", "#sfla2 {width: 50px; }"),
-               tags$style(type="text/css", "#sba2 {width: 50px; }"),
-               tags$style(type="text/css", "#WASY2 {width: 50px; }"),
-               tags$style(type="text/css", "#WSAa2 {width: 50px; }"),
-               tags$style(type="text/css", "#ChMort2a2 {width: 50px; }"),
-               tags$style(type="text/css", "#fMort2a2 {width: 50px; }"),
-               tags$style(type="text/css", "#sMort2a2 {width: 50px; }"),
-               tags$style(type="text/css", "#Psi21Ja {width: 50px; }"),
-               tags$style(type="text/css", "#Psi21J {width: 50px; }"),
-               tags$style(type="text/css", "#Psi21A {width: 50px; }")
+               tags$style(type="text/css", "#Rs2 {width: 100px; }"),
+               tags$style(type="text/css", "#Rf2 {width: 100px; }"),
+               tags$style(type="text/css", "#Rbf2 {width: 100px; }"),
+               tags$style(type="text/css", "#ys2 {width: 100px; }"),
+               tags$style(type="text/css", "#E2 {width: 100px; }"),
+               tags$style(type="text/css", "#f2 {width: 100px; }"),
+               tags$style(type="text/css", "#ns2 {width: 100px; }"),
+               tags$style(type="text/css", "#sfl2 {width: 100px; }"),
+               tags$style(type="text/css", "#sb2 {width: 100px; }"),
+               tags$style(type="text/css", "#WSY2 {width: 100px; }"),
+               tags$style(type="text/css", "#WSA2 {width: 100px; }"),
+               tags$style(type="text/css", "#ChMort22 {width: 100px; }"),
+               tags$style(type="text/css", "#fMort22 {width: 100px; }"),
+               tags$style(type="text/css", "#sMort22 {width: 100px; }"),
+               tags$style(type="text/css", "#Psi21 {width: 100px; }"),
+               tags$style(type="text/css", "#Rsa2 {width: 100px; }"),
+               tags$style(type="text/css", "#Rfa2 {width: 100px; }"),
+               tags$style(type="text/css", "#Rbfa2 {width: 100px; }"),
+               tags$style(type="text/css", "#ya2 {width: 100px; }"),
+               tags$style(type="text/css", "#Ea2 {width: 100px; }"),
+               tags$style(type="text/css", "#fa2 {width: 100px; }"),
+               tags$style(type="text/css", "#nsa2 {width: 100px; }"),
+               tags$style(type="text/css", "#sfla2 {width: 100px; }"),
+               tags$style(type="text/css", "#sba2 {width: 100px; }"),
+               tags$style(type="text/css", "#WASY2 {width: 100px; }"),
+               tags$style(type="text/css", "#WSAa2 {width: 100px; }"),
+               tags$style(type="text/css", "#ChMort2a2 {width: 100px; }"),
+               tags$style(type="text/css", "#fMort2a2 {width: 100px; }"),
+               tags$style(type="text/css", "#sMort2a2 {width: 100px; }"),
+               tags$style(type="text/css", "#Psi21Ja {width: 100px; }"),
+               tags$style(type="text/css", "#Psi21J {width: 100px; }"),
+               tags$style(type="text/css", "#Psi21A {width: 100px; }")
              ),
              
              
@@ -474,9 +474,12 @@ fluidRow(
 
            textOutput("lambda1"), #growth rate for site 1, if 1 site is selected
          textOutput("lambda1b"), #growth rate for site 1, if 2 sites are selected
+         textOutput("MProd1"), #mean productivity for breeders at site 1, if 1 site is selected
+         textOutput("MProd1b"), #mean productivity for breeders at site 1, if 2 sites are selected
          textOutput("pextinct1"), #exctinction probability for site 1, if 1 site is selected
          textOutput("pextinct1b"), #extinction probability for site 1, if 2 sites are selected
          textOutput("lambda2"), #growth rate for site 2
+         textOutput("MProd2"), #mean productivity for breeders at site 2, if 2 site is selected
          textOutput("pextinct2"), #extinction prob. for site 2
          textOutput("lambdatot"), #growth rate for metapopulation
          textOutput("pextinctm"), #extinction probability for metapopulation
