@@ -15,7 +15,7 @@ library(shiny)
 library(MASS)
 
 #the following code sets values for global constants.  The user doesn't yet have access to them.
-N.year <- 100
+N.year <- 25
 rfdelta <- 0.33 #proportional decrease in probability of renesting following the second nest failure.  Gets multiplied by rf.
 rsdelta <- 0.1 #proportional decrease in probability of renesting following the success of the second brood.  Gets multiplied by rs. 
 rbfdelta <- 0.625 #proportional decrease in probability of renesting following the failure of the second brood. Gets multiplied by rbf. 
