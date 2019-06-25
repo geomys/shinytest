@@ -512,12 +512,12 @@ output$Ns02 <- renderUI({
       Extinct2 = 0 #same but for population 2
       Extinctm = 0 #same but for metapopulation
       
-      Nmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=100) #a matrix to hold the pop size for stratum 1
-      Nbmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=100) #matrix to hold the breeding pop size, stratum 1
-      Nmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=100) #a matrix to hold the pop size for stratum 2
-      Nbmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=100) #matrix to hold the breeding pop size, stratum 2
-      Nmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=100) #a matrix to hold the pop size for the metapopulation
-      Nbmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=100) # a matrix to hold the breeding metapop size
+      Nmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #a matrix to hold the pop size for stratum 1
+      Nbmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #matrix to hold the breeding pop size, stratum 1
+      Nmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #a matrix to hold the pop size for stratum 2
+      Nbmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #matrix to hold the breeding pop size, stratum 2
+      Nmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #a matrix to hold the pop size for the metapopulation
+      Nbmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) # a matrix to hold the breeding metapop size
       K <- input$K  #user-defined carrying capacity, stratum 1
       K2 <- input$K2 #user-defined carrying capacity, stratum 2
       
@@ -723,10 +723,10 @@ output$Ns02 <- renderUI({
             Ntotalbtot[i] <- Nbreed1[i]+Nbreed2[i]
           }
         }
-        Extinct1[Ntotal1[100]<1]=Extinct1+1 #adds up the number of runs where the population went extinct
+        Extinct1[Ntotal1[N.Year]<1]=Extinct1+1 #adds up the number of runs where the population went extinct
         if (input$States==2){
-        Extinct2[Ntotal2[100]<1]=Extinct2+1 #adds up the number of runs where the population went extinct
-        Extinctm[Ntotaltot[100]<1]=Extinctm+1} #adds up the number of runs where the population went extinct
+        Extinct2[Ntotal2[N.Year]<1]=Extinct2+1 #adds up the number of runs where the population went extinct
+        Extinctm[Ntotaltot[N.Year]<1]=Extinctm+1} #adds up the number of runs where the population went extinct
     
         
         #matrices that hold the population sizes across years for all the iterations
