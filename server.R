@@ -816,7 +816,7 @@ output$Ns02 <- renderUI({
   output$pextinct1 <- renderText({#probability of extinction for stratum 1, where there is only 1 stratum
     if(is.null(input$Na0)) {return(NULL)}
     if(input$States==2) {return(NULL)}
-    paste("Probability of extinction: ",trajectory()$N11)})
+    paste("Probability of extinction: ",trajectory()$Eprob1)})
 
 output$pextinct1b <- renderText({#probability of extinction for stratum 1, where there are 2 strata
   if(is.null(input$Na0)) {return(NULL)}
