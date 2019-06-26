@@ -15,7 +15,7 @@ library(shiny)
 library(MASS)
 
 #the following code sets values for global constants.  The user doesn't yet have access to them.
-N.Year <- 100
+N.year <- 25
 rfdelta <- 0.33 #proportional decrease in probability of renesting following the second nest failure.  Gets multiplied by rf.
 rsdelta <- 0.1 #proportional decrease in probability of renesting following the success of the second brood.  Gets multiplied by rs. 
 rbfdelta <- 0.625 #proportional decrease in probability of renesting following the failure of the second brood. Gets multiplied by rbf. 
@@ -130,6 +130,9 @@ shinyServer(function(input,output,session){ #standard first line
   output$Psi12Ja<- renderUI({
     numericInput("Psi12Ja", label=h6("Juvenile movement rate to Site 2:"), 0, min = 0.00, max = 1.00,step=0.01)
   })
+  output$NMort2a<- renderUI({
+    numericInput("NMort2a", label=h6("Nest Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
+  })
   output$ChMort2a<- renderUI({
     numericInput("ChMort2a", label=h6("Pre-fledging Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
   })
@@ -182,6 +185,9 @@ output$Ns0 <- renderUI({
   })
   output$Psi12J<- renderUI({
     numericInput("Psi12J", label=h6("Juvenile movement rate to Site 2:"), 0, min = 0.00, max = 1.00,step=0.01)
+  })
+  output$NMort2<- renderUI({
+    numericInput("NMort2", label=h6("Nest Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
   })
   output$ChMort2<- renderUI({
     numericInput("ChMort2", label=h6("Pre-fledging Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
@@ -237,6 +243,9 @@ output$Ns0 <- renderUI({
   output$Psi21Ja<- renderUI({
     numericInput("Psi21Ja", label=h6("Juvenile movement rate to Site 1:"), 0, min = 0.00, max = 1.00,step=0.01)
   })
+  output$NMort2a2<- renderUI({
+    numericInput("NMort2a2", label=h6("Nest Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
+  })
   output$ChMort2a2<- renderUI({
     numericInput("ChMort2a2", label=h6("Pre-fledging Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
   })
@@ -291,6 +300,9 @@ output$Ns02 <- renderUI({
   output$Psi21J<- renderUI({
     numericInput("Psi21J", label=h6("Juvenile movement rate to Site 1:"), 0, min = 0.00, max = 1.00,step=0.01)
   })
+  output$NMort22<- renderUI({
+    numericInput("NMort22", label=h6("Nest Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
+  })
   output$ChMort22<- renderUI({
     numericInput("ChMort22", label=h6("Pre-fledging Survival of Hazard:"), 1, min = 0.00, max = 1.00,step=0.01)
   })
@@ -321,6 +333,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"WASY", ,0.85,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSAa", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12Ja", ,0,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2a", ,1,min=0.00,max=1.00,step=0.01 )
@@ -337,6 +350,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"WSA", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12A", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi12J", ,0,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2", ,1,min=0.00,max=1.00,step=0.01 )
@@ -359,6 +373,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"WASY2", ,0.85,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"WSAa2", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21Ja", ,0,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
@@ -375,6 +390,7 @@ output$Ns02 <- renderUI({
       updateNumericInput(session,"WSA2", ,0.59,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21A", ,0,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"Psi21J", ,0,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort22", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort22", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort22", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort22", ,1,min=0.00,max=1.00,step=0.01 )
@@ -393,16 +409,20 @@ output$Ns02 <- renderUI({
     #resets the values of additional hazards to zero if number of hazards gets set back to 1
     if (as.numeric(input$Mort) == 1) {
       updateNumericInput(session,"sMort2a", ,1,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2a", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2", ,1,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort2a2", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"sMort22", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"fMort22", ,1,min=0.00,max=1.00,step=0.01 )
+      updateNumericInput(session,"NMort22", ,1,min=0.00,max=1.00,step=0.01 )
       updateNumericInput(session,"ChMort22", ,1,min=0.00,max=1.00,step=0.01 )
     }
   })
@@ -412,11 +432,11 @@ output$Ns02 <- renderUI({
   #adults stratum 1
   #reactive is the shiny function that causes the values of variables to change, or creates variables that can later be changed
   ba1 <- reactive({BS(input$fa,input$ChMort2a,input$Ea)}) #calculates brood survival
-
+  nsfinala1 <- reactive({input$nsa*input$NMort2a})
  #the probabilities that an adult male will have 1, 2, or 3 nests that hatch, stratum 1
-  ps1a <- reactive({PS1(input$nsa,ba1(),input$Rsa,input$Rfa,input$Rbfa)})
-  ps2a <- reactive({PS2(input$nsa,ba1(),input$Rsa,input$Rfa,input$Rbfa)})
-  ps3a <- reactive({PS3(input$nsa,ba1(),input$Rsa,input$Rfa,input$Rbfa)})
+  ps1a <- reactive({PS1(nsfinala1(),ba1(),input$Rsa,input$Rfa,input$Rbfa)})
+  ps2a <- reactive({PS2(nsfinala1(),ba1(),input$Rsa,input$Rfa,input$Rbfa)})
+  ps3a <- reactive({PS3(nsfinala1(),ba1(),input$Rsa,input$Rfa,input$Rbfa)})
 
 
   pveca <- reactive({c(ps1a(),ps2a(),ps3a())}) #vector of the above 3 probabiliities
@@ -429,11 +449,11 @@ output$Ns02 <- renderUI({
   #subadults stratum 1
   
   bs1 <- reactive({BS(input$f,input$ChMort2,input$E)}) #brood survival, subadults, stratum 1
-  
+  nsfinals1 <- reactive({input$ns*input$NMort2})
 #the probabilities that a subadult male will have 1, 2, or 3 nests that hatch, stratum 1
-  ps1 <- reactive({PS1(input$ns,bs1(),input$Rs,input$Rf,input$Rbf)})
-  ps2 <- reactive({PS2(input$ns,bs1(),input$Rs,input$Rf,input$Rbf)})
-  ps3 <- reactive({PS3(input$ns,bs1(),input$Rs,input$Rf,input$Rbf)})
+  ps1 <- reactive({PS1(nsfinals1(),bs1(),input$Rs,input$Rf,input$Rbf)})
+  ps2 <- reactive({PS2(nsfinals1(),bs1(),input$Rs,input$Rf,input$Rbf)})
+  ps3 <- reactive({PS3(nsfinals1(),bs1(),input$Rs,input$Rf,input$Rbf)})
   
 
   pvecs <- reactive({c(ps1(),ps2(),ps3())})#vector of the above 3 probabiliities
@@ -452,9 +472,11 @@ output$Ns02 <- renderUI({
   #STRATUM 2
   #adults stratum 2
   ba2 <- reactive({BS(input$fa2,input$ChMort2a2,input$Ea2)}) 
-  ps1a2 <- reactive({PS1(input$nsa2,ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
-  ps2a2 <- reactive({PS2(input$nsa2,ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
-  ps3a2 <- reactive({PS3(input$nsa2,ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
+  nsfinala2 <- reactive({input$nsa2*input$NMort2a2})
+  
+  ps1a2 <- reactive({PS1(nsfinala2(),ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
+  ps2a2 <- reactive({PS2(nsfinala2(),ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
+  ps3a2 <- reactive({PS3(nsfinala2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
   
   
   pveca2 <- reactive({c(ps1a2(),ps2a2(),ps3a2())})
@@ -465,10 +487,10 @@ output$Ns02 <- renderUI({
   
   #subadults stratum 2
   bs2 <- reactive({BS(input$f2,input$ChMort22,input$E2)})
-  
-  ps12 <- reactive({PS1(input$ns2,bs2(),input$Rs2,input$Rf2,input$Rbf2)})
-  ps22 <- reactive({PS2(input$ns2,bs2(),input$Rs2,input$Rf2,input$Rbf2)})
-  ps32 <- reactive({PS3(input$ns2,bs2(),input$Rs2,input$Rf2,input$Rbf2)})
+  nsfinals2 <- reactive({input$ns2*input$NMort22})
+  ps12 <- reactive({PS1(nsfinals2(),bs2(),input$Rs2,input$Rf2,input$Rbf2)})
+  ps22 <- reactive({PS2(nsfinals2(),bs2(),input$Rs2,input$Rf2,input$Rbf2)})
+  ps32 <- reactive({PS3(nsfinals2(),bs2(),input$Rs2,input$Rf2,input$Rbf2)})
   
   
   pvecs2 <- reactive({c(ps12(),ps22(),ps32())})
@@ -512,12 +534,12 @@ output$Ns02 <- renderUI({
       Extinct2 = 0 #same but for population 2
       Extinctm = 0 #same but for metapopulation
       
-      Nmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #a matrix to hold the pop size for stratum 1
-      Nbmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #matrix to hold the breeding pop size, stratum 1
-      Nmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #a matrix to hold the pop size for stratum 2
-      Nbmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #matrix to hold the breeding pop size, stratum 2
-      Nmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) #a matrix to hold the pop size for the metapopulation
-      Nbmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.Year) # a matrix to hold the breeding metapop size
+      Nmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.year) #a matrix to hold the pop size for stratum 1
+      Nbmatrix <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.year) #matrix to hold the breeding pop size, stratum 1
+      Nmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.year) #a matrix to hold the pop size for stratum 2
+      Nbmatrix2 <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.year) #matrix to hold the breeding pop size, stratum 2
+      Nmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.year) #a matrix to hold the pop size for the metapopulation
+      Nbmatrixtotal <- matrix(0,nrow=as.numeric(input$maxiter),ncol=N.year) # a matrix to hold the breeding metapop size
       K <- input$K  #user-defined carrying capacity, stratum 1
       K2 <- input$K2 #user-defined carrying capacity, stratum 2
       
@@ -619,12 +641,12 @@ output$Ns02 <- renderUI({
           popmattotal[2,1] <- input$Na0
           popmattotal[3,1] <- input$Ns02
           popmattotal[4,1] <- input$Na02
-          Ntotal1 <- c(popmat1[1,1]+popmat1[2,1],rep(0,N.Year-1))
-          Nbreed1 <- c(min(popmat1[1,1]+popmat1[2,1],K),rep(0,N.Year-1))
-          Ntotal2 <- c(popmat2[1,1]+popmat2[2,1],rep(0,N.Year-1))
-          Nbreed2 <- c(min(popmat2[1,1]+popmat2[2,1],K2),rep(0,N.Year-1))
-          Ntotaltot <- c(popmattotal[1,1]+popmattotal[2,1]+popmattotal[3,1]+popmattotal[4,1],rep(0,N.Year-1))
-          Ntotalbtot <- c((Nbreed1[1]+Nbreed2[1]),rep(0,N.Year-1))
+          Ntotal1 <- c(popmat1[1,1]+popmat1[2,1],rep(0,N.year-1))
+          Nbreed1 <- c(min(popmat1[1,1]+popmat1[2,1],K),rep(0,N.year-1))
+          Ntotal2 <- c(popmat2[1,1]+popmat2[2,1],rep(0,N.year-1))
+          Nbreed2 <- c(min(popmat2[1,1]+popmat2[2,1],K2),rep(0,N.year-1))
+          Ntotaltot <- c(popmattotal[1,1]+popmattotal[2,1]+popmattotal[3,1]+popmattotal[4,1],rep(0,N.year-1))
+          Ntotalbtot <- c((Nbreed1[1]+Nbreed2[1]),rep(0,N.year-1))
           
           for (i in 2:N.year) { #loop through the years
             rcat <- rbinom(1,1,0.95) #probability of no reproductive catastrophe, wherer fecundity = 0
@@ -723,10 +745,10 @@ output$Ns02 <- renderUI({
             Ntotalbtot[i] <- Nbreed1[i]+Nbreed2[i]
           }
         }
-        Extinct1[Ntotal1[N.Year]<1]=Extinct1+1 #adds up the number of runs where the population went extinct
+        Extinct1[Ntotal1[N.year]<1]=Extinct1+1 #adds up the number of runs where the population went extinct
         if (input$States==2){
-        Extinct2[Ntotal2[N.Year]<1]=Extinct2+1 #adds up the number of runs where the population went extinct
-        Extinctm[Ntotaltot[N.Year]<1]=Extinctm+1} #adds up the number of runs where the population went extinct
+        Extinct2[Ntotal2[N.year]<1]=Extinct2+1 #adds up the number of runs where the population went extinct
+        Extinctm[Ntotaltot[N.year]<1]=Extinctm+1} #adds up the number of runs where the population went extinct
     
         
         #matrices that hold the population sizes across years for all the iterations
