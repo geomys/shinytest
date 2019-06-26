@@ -15,7 +15,7 @@ library(shiny)
 library(MASS)
 
 #the following code sets values for global constants.  The user doesn't yet have access to them.
-N.year <- 25
+N.Year <- 100
 rfdelta <- 0.33 #proportional decrease in probability of renesting following the second nest failure.  Gets multiplied by rf.
 rsdelta <- 0.1 #proportional decrease in probability of renesting following the success of the second brood.  Gets multiplied by rs. 
 rbfdelta <- 0.625 #proportional decrease in probability of renesting following the failure of the second brood. Gets multiplied by rbf. 
@@ -619,12 +619,12 @@ output$Ns02 <- renderUI({
           popmattotal[2,1] <- input$Na0
           popmattotal[3,1] <- input$Ns02
           popmattotal[4,1] <- input$Na02
-          Ntotal1 <- c(popmat1[1,1]+popmat1[2,1],rep(0,N.year-1))
-          Nbreed1 <- c(min(popmat1[1,1]+popmat1[2,1],K),rep(0,N.year-1))
-          Ntotal2 <- c(popmat2[1,1]+popmat2[2,1],rep(0,N.year-1))
-          Nbreed2 <- c(min(popmat2[1,1]+popmat2[2,1],K2),rep(0,N.year-1))
-          Ntotaltot <- c(popmattotal[1,1]+popmattotal[2,1]+popmattotal[3,1]+popmattotal[4,1],rep(0,N.year-1))
-          Ntotalbtot <- c((Nbreed1[1]+Nbreed2[1]),rep(0,N.year-1))
+          Ntotal1 <- c(popmat1[1,1]+popmat1[2,1],rep(0,N.Year-1))
+          Nbreed1 <- c(min(popmat1[1,1]+popmat1[2,1],K),rep(0,N.Year-1))
+          Ntotal2 <- c(popmat2[1,1]+popmat2[2,1],rep(0,N.Year-1))
+          Nbreed2 <- c(min(popmat2[1,1]+popmat2[2,1],K2),rep(0,N.Year-1))
+          Ntotaltot <- c(popmattotal[1,1]+popmattotal[2,1]+popmattotal[3,1]+popmattotal[4,1],rep(0,N.Year-1))
+          Ntotalbtot <- c((Nbreed1[1]+Nbreed2[1]),rep(0,N.Year-1))
           
           for (i in 2:N.year) { #loop through the years
             rcat <- rbinom(1,1,0.95) #probability of no reproductive catastrophe, wherer fecundity = 0
