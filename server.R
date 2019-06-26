@@ -476,7 +476,7 @@ output$Ns02 <- renderUI({
   
   ps1a2 <- reactive({PS1(nsfinala2(),ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
   ps2a2 <- reactive({PS2(nsfinala2(),ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
-  ps3a2 <- reactive({PS3(nsfinala2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
+  ps3a2 <- reactive({PS3(nsfinala2(),ba2(),input$Rsa2,input$Rfa2,input$Rbfa2)})
   
   
   pveca2 <- reactive({c(ps1a2(),ps2a2(),ps3a2())})
